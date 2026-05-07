@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 
 export default function BookListItem({ book }) {
-  const cover = book.formats?.["image/jpeg"] || "https://via.placeholder.com/120x170?text=No+Cover";
-  const authors =
+const cover =
+  book.formats?.["image/jpeg"] ||
+  "https://via.placeholder.com/120x170?text=No+Cover";
+  
+const authors =
     book.authors?.map((author) => author.name).join(", ") || "Unknown author";
 
   return (
     <article className="book-row">
-      <img src={cover} alt={book.title} className="book-row-cover" />
+      <img src={cover} alt={book.title} className="book-row-cover" loading="lazy"  decoding="async" />
 
       <div className="book-row-content">
         <h2>{book.title}</h2>

@@ -40,4 +40,4 @@ export function getPreferredReadUrl(book) {
     book.formats["application/epub+zip"] ||
     null
   );
-}
+} 

@@ -21,8 +21,7 @@ export default function Favorites() {
       ) : (
         <div className="book-list">
           {favorites.map((book) => (
-            <BookListItem key={book.id} book={book} />
-          ))}
+          <BookListItem key={book.id || book.key} book={book} /> ))}
         </div>
       )}
     </section>

@@ -1,4 +1,8 @@
-const FAVORITES_KEY = "gutendex_favorites";
+const FAVORITES_KEY = "openlibrary_favorites";
+
+function getBookId(book) {
+  return book.key || book.id;
+}
 
 export function getFavorites() {
   return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
@@ -9,12 +13,14 @@ export function saveFavorites(favorites) {
 }
 
 export function isFavorite(bookId) {
-  return getFavorites().some((item) => item.id === bookId);
+  return getFavorites().some((item) => getBookId(item) === bookId);
 }
 
 export function addFavorite(book) {
   const favorites = getFavorites();
-  const exists = favorites.some((item) => item.id === book.id);
+  const bookId = getBookId(book);
+
+  const exists = favorites.some((item) => getBookId(item) === bookId);
 
   if (!exists) {
     saveFavorites([...favorites, book]);
@@ -23,5 +29,6 @@ export function addFavorite(book) {
 
 export function removeFavorite(bookId) {
   const favorites = getFavorites();
-  saveFavorites(favorites.filter((item) => item.id !== bookId));
+  const updated = favorites.filter((item) => getBookId(item) !== bookId);
+  saveFavorites(updated);
 }

@@ -16,6 +16,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+
   useEffect(() => {
     setCurrentPage(1);
   }, [search, topic]);

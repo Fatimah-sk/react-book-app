@@ -4,7 +4,7 @@ export default function PagePagination({
   onPageChange,
 }) {
   const booksPerPage = 32;
-  const totalPages = Math.ceil(count / booksPerPage);
+  const totalPages = Math.min(Math.ceil(count / booksPerPage),5);
 
   if (totalPages <= 1) return null;
 

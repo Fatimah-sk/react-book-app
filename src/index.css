@@ -189,7 +189,7 @@ select {
   height: 170px;
   object-fit: cover;
   border-radius: 14px;
-}
+} 
 
 .book-row-content h2 {
   margin: 0 0 10px;
